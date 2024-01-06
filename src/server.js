@@ -27,3 +27,7 @@ app.use('/users', usersRouter);
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
 });
+
+app.get('/', function(req, res) {
+  res.sendFile('views/test.html', {root: __dirname })
+});
