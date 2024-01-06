@@ -1,13 +1,17 @@
 const router = require('express').Router();
-let User = require('../models/user.model');
+let User = require('../../models/user.model');
 
 router.route('/').get((req, res) => {
+  res.sendFile('/users.html', {root: __dirname })
+});
+
+router.route('/search').get((req, res) => {
   User.find()
     .then(users => res.json(users))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/:username').get((req, res) => {  
+router.route('/search/:username').get((req, res) => {  
     User.find({
           username: req.params.username
         })

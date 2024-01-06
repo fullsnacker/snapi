@@ -18,8 +18,8 @@ connection.once('open', () => {
   console.log("MongoDB database connection established successfully");
 });
 
-const exercisesRouter = require('./routes/exercises');
-const usersRouter = require('./routes/users');
+const exercisesRouter = require('./routes/exercises/exercises');
+const usersRouter = require('./routes/users/users');
 
 app.use('/exercises', exercisesRouter);
 app.use('/users', usersRouter);
@@ -29,5 +29,5 @@ app.listen(port, () => {
 });
 
 app.get('/', function(req, res) {
-  res.sendFile('views/test.html', {root: __dirname })
+  res.sendFile('index.html', {root: __dirname })
 });
